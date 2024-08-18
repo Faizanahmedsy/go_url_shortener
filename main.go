@@ -48,7 +48,7 @@ func generateShortUrl(OriginalURL string) string {
 func createUrl(originalUrl string) string {
 	shortUrl := generateShortUrl(originalUrl)
 	// id := generateRandomID()
-	id := shortUrl
+	id := shortUrl //Todo: replace this with  generateRandomID()
 
 	urlDB[id] = URL{
 		ID:           id,
@@ -57,7 +57,6 @@ func createUrl(originalUrl string) string {
 		CreationDate: time.Now(),
 	}
 	return shortUrl
-
 }
 
 func getUrl(id string) (URL, error) {
@@ -130,6 +129,7 @@ func main() {
 	generateShortUrl(OriginalURL)
 
 	// SERVER HANDLERS
+	// todo: move to separate file
 
 	http.HandleFunc("/", handler)
 	http.HandleFunc("/shorten", shortUrlHandler)
